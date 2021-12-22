@@ -5,10 +5,10 @@
 
 Page Info:
 -----------------------
-Name: 		Rajendra M G
-Version: 	1.0
-Author: 	Rajendra M G
-Website: 	https://mgrajendra.github.io
+Name: 		Rajendra M G (http://mgrajendra.com)
+Version: 	2.0
+Author: 	Rajendra M G (http://mgrajendra.com)
+Website: 	https://itsolutionexpert.github.io (http://itsolutionexpert.co.in)
 
 
 Changelog:
