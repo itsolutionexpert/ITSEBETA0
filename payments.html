@@ -220,73 +220,41 @@
     </div>
     <!-- end inner page banner -->
     <!-- section -->
-    <body>
-        <div class="section padding_layout_1 service_list">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="full">
-                            <div class="main_heading text_align_center">
-                                <h2>Payment</h2>
-                            </div>
+    <div class="section padding_layout_1 service_list">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="main_heading text_align_center">
+                            <h2>Payment</h2>
                         </div>
-                        <script type="application/javascript" crossorigin="anonymous" src="https://securegw.paytm.in/merchantpgpui/checkoutjs/merchants/ITSolu68738884611046.js" onload="onScriptLoad();"> </script>
-                        <script>
-                            function onScriptLoad() {
-                                var config = {
-                                    "root": "",
-                                    "flow": "DEFAULT",
-                                    "data": {
-                                        "orderId": "", /* update order id */
-                                        "token": "", /* update token value */
-                                        "tokenType": "TXN_TOKEN",
-                                        "amount": "" /* update amount */
-                                    },
-                                    "handler": {
-                                        "notifyMerchant": function (eventName, data) {
-                                            console.log("notifyMerchant handler function called");
-                                            console.log("eventName => ", eventName);
-                                            console.log("data => ", data);
-                                        }
-                                    }
-                                };
-
-                                if (window.Paytm && window.Paytm.CheckoutJS) {
-                                    window.Paytm.CheckoutJS.onLoad(function excecuteAfterCompleteLoad() {
-                                        // initialze configuration using init method
-                                        window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
-                                            // after successfully updating configuration, invoke JS Checkout
-                                            window.Paytm.CheckoutJS.invoke();
-                                        }).catch(function onError(error) {
-                                            console.log("error => ", error);
-                                        });
-                                    });
-                                }
-                            }
-                        </script>
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                            <div class="price_table_inner margin_bottom_30">
-                                <div class="price_head text_align_center">
-                                    <h5>Pay here online</h5>
-                                    <p>All Payment mode Accepeted vby our Payment Gateway Partner</p>
-                                </div>
-                                <!--<div class="price_contant">
-                                    <div class="center">
-                                        <p class="price_amount">$ <span class="price_no">180</span>/Per Month</p>
-                                    </div>
-                                    <div class="price_cont text_align_center">
-                                        <p>Fast service</p>
-                                        <p>Safe payments</p>
-                                        <p>Fully trained employees</p>
-                                        <p>Sustainable products</p>
-                                    </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="price_table_inner margin_bottom_30">
+                            <div class="price_head text_align_center">
+                                <h5>Pay here online</h5>
+                                <p>All Payment mode Accepeted vby our Payment Gateway Partner</p>
+                            </div>
+                            <div class="price_contant">
+                                <!--<div class="center">
+                                    <p class="price_amount">$ <span class="price_no">180</span>/Per Month</p>
                                 </div>-->
-                                <div class="price_bottom">
-                                    <div class="center"> <a href="#" class="btn dark_gray_bt"></a> </div>
+                                <div class="price_cont text_align_center">
+                                    <p>Fast service</p>
+                                    <p>Safe payments</p>
+                                    <p>Experienced & Skilled Resources</p>
+                                    <p>Freelancer Service</p>
                                 </div>
                             </div>
+                            <div class="price_bottom">
+                                <div class="center"> <a href="checkout_paytm.html" class="btn dark_gray_bt"></a> </div>
+                            </div>
                         </div>
-    </body>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--<div class="section padding_layout_1 service_list">
     <div class="container">
         <div class="row">
