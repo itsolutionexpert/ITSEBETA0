@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-214400059-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-214400059-1');
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Transaction with JS Checkout</title>
+    <link rel="shortcut icon" type="image/png" href="images/fevicon/fevicon.png" />
+    <script type="application/javascript" src="https://developer.paytm.com/demo//static/js/jquery.min.js"></script>
+    <link href="https://developer.paytm.com/demo//static/css/style.css?v=1.9" rel="stylesheet" />
+
+    <script type="application/javascript" src="https://securegw.paytm.in//merchantpgpui/checkoutjs/merchants/ITSolu68738884611046.js"></script>
+
+
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html">
+                <div class="logo">
+                    <!-- <span><img src="images/logos/it_logo_2.png" alt="IT Solution Expert logo image" /></span>-->
+                </div>
+            </a>
+        </div>
+        <a href="index.html">
+            <div class="logo">
+                <span><img src="images/logos/it_logo_2.png" alt="IT Solution Expert logo image" /></span>
+            </div>
+        </a>
+    </header>
+    <div class="main-content">
+        <div class="heading">
+            <h1>IT Solution Expert - Payment Checkout</h1>
+        </div>
+        <div class="container">
+            <div class="topcenterbox">
+                <h3>Payment Summary</h3>
+                <div class="rightBox">
+                    <div class="orderDetails">
+                        <div class="orderSummaryBox">
+                            <!--<p class="itemprice extra"><span>Total &nbsp;<b class="greyText">(Inclusive of all charges)</b></span><span>Rs 1.00</span></p>-->
+                            <!--<p class="itemprice extra"><span>Discount</span><span>Rs 0.00</span></p>-->
+                            <!--<p class="itemprice extra"><span>Shipping Charges</span>Rs 0.00<span></span></p>-->
+                            <!--<p class="itemprice"><span><b>Total Amount Payable</b></span><span><b>Rs 1.00</b></span></p>-->
+                            <p>
+                                <label for="fname">Name: </label>
+                                <input type="text" id="fname" name="fname"><br><br><
+                            </p>
+                            <p>
+                                <label for="orgname">Organization Name: </label>
+                                <input type="text" id="orgname" name="lname"><br><br>
+                            </p>
+                            <p>
+                                <label for="email">E-Mail: </label>
+                                <input type="text" id="email" name="lname"><br><br>
+                            </p>
+                            <p>
+                                <label for="amount">Amount (INR): </label>
+                                <input type="number" id="amount" name="lname"><br><br>
+                            </p>
+                            <p id="summation">
+                                <label id="sum">Total Amount (INR):</label>
+                                <label id="sum">0</label>
+                            </p>
+                            <label type="checkbox" checked=""></label>
+                            <button class="button" id="paytmWithPaytm">Pay with Paytm</button>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <!--<p class="grayText">
+                    *This is real transaction, and the money will be auto-refunded to your account in 4-5
+                    days
+                </p>-->
+            </div>
+            <!-- end of top right box -->
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            //iterate through each textboxes and add keyup
+            //handler to trigger sum event
+            $(".txt").each(function () {
+
+                $(this).keyup(function () {
+                    calculateSum();
+                });
+            });
+
+        });
+
+        function calculateSum() {
+
+            var sum = 0;
+            //iterate through each textboxes and add the values
+            $(".txt").each(function () {
+
+                //add only if the value is number
+                if (!isNaN(this.value) && this.value.length != 0) {
+                    sum += parseFloat(this.value);
+                }
+
+            });
+            //.toFixed() method will roundoff the final sum to 2 decimal places
+            $("#sum").html(sum.toFixed(2));
+        }
+    </script>
+    <script type="text/javascript">
+
+        document.getElementById("paytmWithPaytm").addEventListener("click", function () {
+            onScriptLoad("208daec4acc6423580c367dcbf1f334e1640358448868", "1640357751599", "1.00");
+        });
+        function onScriptLoad(txnToken, orderId, amount) {
+            var config = {
+                "root": "",
+                "flow": "DEFAULT",
+                "merchant": {
+                    "name": "IT Solution Expert",
+                    "logo": "images/logos/it_logo_2.png?v=1.4"
+                },
+                "style": {
+                    "headerBackgroundColor": "#8dd8ff",
+                    "headerColor": "#3f3f40"
+                },
+                "data": {
+                    "orderId": orderId,
+                    "token": txnToken,
+                    "tokenType": "TXN_TOKEN",
+                    "amount": amount
+                },
+                "handler": {
+                    "notifyMerchant": function (eventName, data) {
+                        if (eventName == 'SESSION_EXPIRED') {
+                            alert("Your session has expired!!");
+                            location.reload();
+                        }
+                    }
+                }
+            };
+
+            if (window.Paytm && window.Paytm.CheckoutJS) {
+                // initialze configuration using init method
+                window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
+                    console.log('Before JS Checkout invoke');
+                    // after successfully update configuration invoke checkoutjs
+                    window.Paytm.CheckoutJS.invoke();
+                }).catch(function onError(error) {
+                    console.log("Error => ", error);
+                });
+            }
+        }
+    </script>
+
+    <footer>
+        <div class="footer-bottom">
+            <!--<div class="lightBlue"></div>-->
+            <div class="darkBlue"></div>
+            <div class="linksdiv">
+                <ul class="footerlinks">
+                    <li><a href="term_condition.html" target="_blank">Terms of Service</a></li>
+                    <li><a href="privacy_policy.html" target="_blank">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="copyright footerlinks">
+                <ul><li>© 2021, IT Solution Expert</li></ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
